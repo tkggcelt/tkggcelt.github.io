@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Shell命令学习之sed | 闲言逸语</title>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--========================== style css ==========================-->
+    <!--link rel="stylesheet" href="/css/main.css"-->
+    <link href="/css/style.css" rel="stylesheet">
+    <!--============================ fevicon ===============================-->
+    <link rel="shortcut icon" type="image/png" href="/img/fev-icon.ico">
+    <!--========================== responsive css ==========================-->
+    <link href="/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--========================== Main jQuery ==========================-->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!--========================== Bootstrap js ==========================-->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--========================== Custom js ==========================-->  
+    <script src="/js/jquery.sticky.js"></script>
+</head>
+<body class="index-one">
+    <!--========================== preloader ==========================-->
+<div id="preloader"></div>
+<!--========================== menu-area-start ==========================-->
+<section class="menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="menu-area-content clearfix">
+                <nav class="navbar" style="margin-bottom:0 !important;">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top:8px;margin-left:10px">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">闲言逸语</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                
+                                <li><a href="/">首页</a></li>
+                                
+                                <li><a href="/page/category.html">栏目</a></li>
+                                
+                                <li><a href="/page/tag.html">标签</a></li>
+                                
+                                <li><a href="/page/about.html">关于</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="categories-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="category-border-content">
+                    <div class="category-detail category">
+                        
+                            <div class="category-img">
+                                <img src="/postimg/default/default-15.jpg" class="set-random-image">
+                                <div class="category-overlay"></div>
+                            </div>
+                        
+
+                        <div class="category-text read-more clearfix">
+                            
+                            <h4 class="post-content-title"><a href="/2016/03/23/shell-sed/">Shell命令学习之sed</a></h4>
+                            <div class="clearfix post-content-info">
+                                <a href="#" class="art">
+                                    
+                                        <span class="label label-default">shell</span>
+                                    
+                                </a>
+                                <span class="art">
+                                    <span class="label label-default">3月 23, 2016</span>
+                                </span>
+                            </div>
+                            
+                            <div class="post-content" itemprop="articleBody">
+                                <p>sed是一个管道命令，可以分析standard input的，而且sed还可以将数据进行替换、删除、新增、选取特定行等功能。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed [-nefr] [动作]</span><br></pre></td></tr></table></figure>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
+<li><strong>-n</strong>：使用安静模式。在一般的sed的用法中，所有来自STDIN的数据一般都会被列出到屏幕上，但如果加上-n参数后，则只有经过sed特殊处理的那一行（或者操作才会被列出来）</li>
+<li><strong>-e</strong>：直接在命令行模式上进行sed的动作编辑</li>
+<li><strong>-f</strong>：直接将sed的动作写在一个文件内，-f filename则可以执行filename内的sed动作</li>
+<li><strong>-r</strong>：sed的动作支持的是扩展型正则表达式的语法（默认是基础正则表达式）</li>
+<li><strong>-i</strong>：直接修改读取的文件内容，而不是由屏幕输出。</li>
+</ul>
+<h2 id="动作说明-n1-n2-function"><a href="#动作说明-n1-n2-function" class="headerlink" title="动作说明 [n1[,n2]]function"></a>动作说明 <code>[n1[,n2]]function</code></h2><blockquote>
+<p>n1、n2：不见得会存在，一般代表选择进行动作的行数，举例来说，如果我的动作是需要在10到20行之间进行，则『10,20[动作行为]』</p>
+</blockquote>
+<p>function有下面这些参数：</p>
+<ul>
+<li><strong>a</strong>：新增，a的后面可以接字符串，而这些字符串会在新的一行出现（目前的下一行）</li>
+<li><strong>c</strong>：替换，c的后面可以接字符串，而这些字符串可以替换n1,n2之间的行</li>
+<li><strong>d</strong>：删除，因为是删除，所以d后面一般不接任何参数</li>
+<li><strong>i</strong>：插入，i的后面可以接字符串，而这些字符串会在新的一行出现（目前的上一行）</li>
+<li><strong>p</strong>：打印，也就是将某个选择的数据打印出来，同时p会与sed -n一起使用</li>
+<li><strong>s</strong>：替换，可以直接进行替换的工作。通常这个s的动作可以搭配正则表达式。例如1,20s/old/new/g就是</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="以行为单位的新增-删除功能"><a href="#以行为单位的新增-删除功能" class="headerlink" title="以行为单位的新增/删除功能"></a>以行为单位的新增/删除功能</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nl /etc/passwd | sed <span class="string">'2,5d'</span></span><br><span class="line"><span class="comment">#将passwd的内容列出来并打印行号，同时删除2~5行</span></span><br><span class="line">nl /etc/passwd | sed <span class="string">'3,$d'</span></span><br><span class="line"><span class="comment"># 删除第3行以后的所有</span></span><br><span class="line">nl /etc/passwd | sed <span class="string">'2a drint tea'</span></span><br><span class="line"><span class="comment">#将passwd内容列出来并打印行号，同时在原第2行后面加上'drink tea'</span></span><br><span class="line">nl /etc/passwd | sed <span class="string">'2a drink tea or \</span><br><span class="line">drink beer'</span></span><br><span class="line"><span class="comment"># 每一行后面以\结尾，可以添加多行。如上可以在第2行后添加2行文本</span></span><br></pre></td></tr></table></figure>
+<h3 id="以行为单位的替换-显示功能"><a href="#以行为单位的替换-显示功能" class="headerlink" title="以行为单位的替换/显示功能"></a>以行为单位的替换/显示功能</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nl /etc/passwd | sed <span class="string">'2,5c No 2——5 number'</span></span><br><span class="line"><span class="comment"># 将第2~5行的内容替换成'No 2——5 number'这一行</span></span><br><span class="line">nl /etc/passwd | sed -n <span class="string">'5,7p'</span></span><br><span class="line"><span class="comment">#仅列出文件的5~7行，比如加-n使用安静模式，否则将全部输出</span></span><br></pre></td></tr></table></figure>
+<h3 id="部分数据的查找并替换功能"><a href="#部分数据的查找并替换功能" class="headerlink" title="部分数据的查找并替换功能"></a>部分数据的查找并替换功能</h3><p>sed的查找与替换功能与vim相似<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed <span class="string">'s/要替换的字符串/新的字符串/g'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="直接修改文件内容"><a href="#直接修改文件内容" class="headerlink" title="直接修改文件内容"></a>直接修改文件内容</h3><p>上面的示例sed都是读取管道数据流，sed也可以直接修改文件，需要使用-i参数<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">'s/\.$/\!/g'</span> file.txt</span><br><span class="line"><span class="comment">#将file.txt内每一行结尾的.都换成！</span></span><br></pre></td></tr></table></figure></p>
+
+                            </div>
+                            <div class="read-more-more clearfix">
+                                <div class="tag floatleft">
+                                    <span><i class="fa fa-tags"></i>Tags</span>
+                                    
+                                        
+                                            <a href="/tags/linux/">linux</a>
+                                        
+                                            <a href="/tags/shell/">shell</a>
+                                        
+                                            <a href="/tags/sed/">sed</a>
+                                        
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="sidebar-widget">
+                    
+
+    
+        
+    
+        
+    
+        
+            
+            
+            
+        
+    
+
+    
+        
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+
+    
+        
+        
+        
+        
+        
+        
+            
+        
+    
+        
+        
+        
+        
+            
+        
+        
+        
+            
+        
+    
+        
+        
+        
+        
+            
+        
+            
+        
+        
+        
+            
+        
+    
+        
+        
+        
+        
+            
+        
+            
+        
+            
+        
+        
+            
+        
+        
+    
+        
+        
+            
+        
+        
+            
+
+    
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>相关文章</h4>
+                </div>
+
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-regx/">Shell命令学习之正则表达式</a></h4>
+                        <p>
+                            
+                            
+                            正则表达式在Shell的日常使用中具有举足轻重的地位，合理运用它，能极大提高工作效率，这里对正则表达式做一个简单易懂的介
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <div class="sidebar-widget">
+                    <div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>最新文章</h4>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 22, 2016</span>
+                        <h4><a href="/2016/03/18/hello-world/">Hello World</a></h4>
+                        <p>
+                            
+                            
+                            # rewrite`s rules for wordpress pretty urlLoadModule rewrite
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/gitbook-quickstart/">gitbook快速入门</a></h4>
+                        <p>
+                            
+                            
+                            Modern book format and toolchain using Git and Markdown，这是gi
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/yaf-install/">Mac下yaf的安装</a></h4>
+                        <p>
+                            
+                            
+                            Yaf，全称 Yet Another Framework，是一个C语言编写的PHP框架，是一个以PHP扩展形式提供的PH
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-bottom-text text-center">
+                    <p>Blog Design 2016 &copy;All Rights reserved</p>
+                    <p>Designed by <span><a href="https://github.com/tkggcelt">tkggcelt</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/active.js"></script>
+<script>
+    $(window).load(function() {
+        $('#preloader').fadeOut('slow', function() {
+            $(this).remove();
+        });
+    });
+</script>
+</body>
+</html>

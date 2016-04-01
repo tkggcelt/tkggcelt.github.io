@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>栏目 | 闲言逸语</title>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--========================== style css ==========================-->
+    <!--link rel="stylesheet" href="/css/main.css"-->
+    <link href="/css/style.css" rel="stylesheet">
+    <!--============================ fevicon ===============================-->
+    <link rel="shortcut icon" type="image/png" href="/img/fev-icon.ico">
+    <!--========================== responsive css ==========================-->
+    <link href="/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--========================== Main jQuery ==========================-->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!--========================== Bootstrap js ==========================-->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--========================== Custom js ==========================-->  
+    <script src="/js/jquery.sticky.js"></script>
+</head>
+<body class="index-one">
+    <!--========================== preloader ==========================-->
+<div id="preloader"></div>
+<!--========================== menu-area-start ==========================-->
+<section class="menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="menu-area-content clearfix">
+                <nav class="navbar" style="margin-bottom:0 !important;">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top:8px;margin-left:10px">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">闲言逸语</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                
+                                <li><a href="/">首页</a></li>
+                                
+                                <li><a href="/page/category.html">栏目</a></li>
+                                
+                                <li><a href="/page/tag.html">标签</a></li>
+                                
+                                <li><a href="/page/about.html">关于</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="slider-area category-page-single">
+    <div class="table category-page-single">
+        <div class="table-cell category-page-single">
+            <h2 id="tag-type-name">栏目总览</h2>
+        </div>
+    </div>
+</section>
+<!--============================== categories-area-start ================================-->
+<style>
+.category-overview {
+    width:100%;
+    float:left;
+    margin-bottom:25px;
+}
+.category-overview>h3{
+    float:left;
+    width:100%;
+    position:relative;
+}
+.category-overview>h3>a:hover {
+    color:#f4b85c;
+}
+.category-overview>h3>.pull-left {
+    border-bottom:2px solid #f4b85c;
+    padding-left:10px;
+    padding-right:10px;
+    display:inline;
+    color:#252525
+}
+.category-overview>h3>.pull-right {
+    font-size:12px;
+    position:absolute;
+    right:5px;
+    bottom:2px;
+    color:#787878;
+    font-weight:normal;
+}
+.category-overview>h3>.pull-right i {
+    margin-left:5px;
+}
+.category-overview-article {
+    border-top:1px solid #f4b85c;
+    float:left;
+    padding-top:10px;
+    width:100%;
+}
+.category-overview-article-item {
+    width:100%;
+    float:left;
+    color:#787878;
+    line-height:1.5em;
+}
+.category-overview-article-item:hover {
+    color: #f4b85c;
+}
+.category-overview-article-item .title{
+    width:80%;
+    display:block;
+    float:left;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.category-overview-article-item .date{
+    display:block;
+    float:right;
+    font-style:italic;
+    padding-right:4px;
+}
+</style>
+<section class="categories-area category-page-single categorypage">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" id="tag-type-list">
+                
+                <div class="category-overview">
+                    <h3>
+                        <a href="/categories/shell/" class="pull-left">shell</a>
+                        <a href="/categories/shell/" class="pull-right">查看全部<i class="fa fa-angle-double-right"></i></a>
+                    </h3>
+                    <div class="category-overview-article">
+                        
+                            
+                            <a href="/2016/03/21/awk/" class="category-overview-article-item">
+                                <span class="title">Shell命令学习之awk</span>
+                                <span class="date">03-23</span>
+                            </a>
+                        
+                            
+                            <a href="/2016/03/23/shell-cut-grep/" class="category-overview-article-item">
+                                <span class="title">shell-cut-grep</span>
+                                <span class="date">03-23</span>
+                            </a>
+                        
+                            
+                            <a href="/2016/03/23/shell-regx/" class="category-overview-article-item">
+                                <span class="title">Shell命令学习之正则表达式</span>
+                                <span class="date">03-23</span>
+                            </a>
+                        
+                            
+                                
+                            
+                                
+                            
+                                
+                    </div>
+                </div>
+                
+                <div class="category-overview">
+                    <h3>
+                        <a href="/categories/test/" class="pull-left">test</a>
+                        <a href="/categories/test/" class="pull-right">查看全部<i class="fa fa-angle-double-right"></i></a>
+                    </h3>
+                    <div class="category-overview-article">
+                        
+                            
+                            <a href="/2016/03/18/hello-world/" class="category-overview-article-item">
+                                <span class="title">Hello World</span>
+                                <span class="date">03-22</span>
+                            </a>
+                        
+                    </div>
+                </div>
+                
+                <div class="category-overview">
+                    <h3>
+                        <a href="/categories/其他/" class="pull-left">其他</a>
+                        <a href="/categories/其他/" class="pull-right">查看全部<i class="fa fa-angle-double-right"></i></a>
+                    </h3>
+                    <div class="category-overview-article">
+                        
+                            
+                            <a href="/2016/03/23/gitbook-quickstart/" class="category-overview-article-item">
+                                <span class="title">gitbook快速入门</span>
+                                <span class="date">03-23</span>
+                            </a>
+                        
+                            
+                            <a href="/2016/03/23/yaf-install/" class="category-overview-article-item">
+                                <span class="title">Mac下yaf的安装</span>
+                                <span class="date">03-23</span>
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar-widget">
+                    <div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="follow-widget">
+            <div class="follow-me-section">
+                <div class="about-photo-content category-page-single">
+                    <img src="/img/myself.png" alt="">
+                </div>
+                <div class="follow-me-title">
+                    <h4>关注我</h4>
+                </div>
+                <div class="follow-me-social-link">
+                    <a href="https://github.com/tkggcelt"><i class="fa fa-github"></i></a>
+                    <a href="http://weibo.com/tkggcelt"><i class="fa fa-weibo"></i></a>
+                    <a href="mailto:tkggcelt@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <!--a href=""><i class="fa fa-instagram"></i></a-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+                <div class="sidebar-widget">
+                    <div class="row">
+    <div class="category-widget-single">
+        <div class="category-widget-single-detail">
+            <div class="category-title">
+                <h4>类别</h4>
+            </div>
+            <div class="category-list">
+                
+                    <div class="category-item">
+                        <a href="/categories/shell/">shell</a>
+                    </div>
+                
+                    <div class="category-item">
+                        <a href="/categories/test/">test</a>
+                    </div>
+                
+                    <div class="category-item">
+                        <a href="/categories/其他/">其他</a>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <div class="sidebar-widget">
+                    <div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>最新文章</h4>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 22, 2016</span>
+                        <h4><a href="/2016/03/18/hello-world/">Hello World</a></h4>
+                        <p>
+                            
+                            
+                            # rewrite`s rules for wordpress pretty urlLoadModule rewrite
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/gitbook-quickstart/">gitbook快速入门</a></h4>
+                        <p>
+                            
+                            
+                            Modern book format and toolchain using Git and Markdown，这是gi
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/yaf-install/">Mac下yaf的安装</a></h4>
+                        <p>
+                            
+                            
+                            Yaf，全称 Yet Another Framework，是一个C语言编写的PHP框架，是一个以PHP扩展形式提供的PH
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-bottom-text text-center">
+                    <p>Blog Design 2016 &copy;All Rights reserved</p>
+                    <p>Designed by <span><a href="https://github.com/tkggcelt">tkggcelt</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/active.js"></script>
+<script>
+    $(window).load(function() {
+        $('#preloader').fadeOut('slow', function() {
+            $(this).remove();
+        });
+    });
+</script>
+</body>
+</html>

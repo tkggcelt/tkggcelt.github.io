@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Mac下yaf的安装 | 闲言逸语</title>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--========================== style css ==========================-->
+    <!--link rel="stylesheet" href="/css/main.css"-->
+    <link href="/css/style.css" rel="stylesheet">
+    <!--============================ fevicon ===============================-->
+    <link rel="shortcut icon" type="image/png" href="/img/fev-icon.ico">
+    <!--========================== responsive css ==========================-->
+    <link href="/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--========================== Main jQuery ==========================-->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!--========================== Bootstrap js ==========================-->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--========================== Custom js ==========================-->  
+    <script src="/js/jquery.sticky.js"></script>
+</head>
+<body class="index-one">
+    <!--========================== preloader ==========================-->
+<div id="preloader"></div>
+<!--========================== menu-area-start ==========================-->
+<section class="menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="menu-area-content clearfix">
+                <nav class="navbar" style="margin-bottom:0 !important;">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top:8px;margin-left:10px">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">闲言逸语</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                
+                                <li><a href="/">首页</a></li>
+                                
+                                <li><a href="/page/category.html">栏目</a></li>
+                                
+                                <li><a href="/page/tag.html">标签</a></li>
+                                
+                                <li><a href="/page/about.html">关于</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="categories-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="category-border-content">
+                    <div class="category-detail category">
+                        
+                            <div class="category-img">
+                                <img src="/postimg/default/default-15.jpg" class="set-random-image">
+                                <div class="category-overlay"></div>
+                            </div>
+                        
+
+                        <div class="category-text read-more clearfix">
+                            
+                            <h4 class="post-content-title"><a href="/2016/03/23/yaf-install/">Mac下yaf的安装</a></h4>
+                            <div class="clearfix post-content-info">
+                                <a href="#" class="art">
+                                    
+                                        <span class="label label-default">其他</span>
+                                    
+                                </a>
+                                <span class="art">
+                                    <span class="label label-default">3月 23, 2016</span>
+                                </span>
+                            </div>
+                            
+                            <div class="post-content" itemprop="articleBody">
+                                <p>Yaf，全称 Yet Another Framework，是一个C语言编写的PHP框架，是一个以PHP扩展形式提供的PHP开发框架, 相比于一般的PHP框架, 它更快，更轻便. 它提供了Bootstrap, 路由, 分发, 视图, 插件, 是一个全功能的PHP框架。</p>
+<h3 id="PHP版本及依赖"><a href="#PHP版本及依赖" class="headerlink" title="PHP版本及依赖"></a>PHP版本及依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php -v</span><br><span class="line"><span class="comment"># PHP 5.5.20 (cli) (built: Feb 25 2015 23:30:53)</span></span><br><span class="line"><span class="comment"># Copyright (c) 1997-2014 The PHP Group</span></span><br><span class="line"><span class="comment"># Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同时要保证gcc、make、automake、autoconf已安装</p>
+</blockquote>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ul>
+<li><strong><a href="http://pecl.php.net/package/yaf" target="_blank" rel="external">点击这里</a></strong>选择适合的yaf版本源码</li>
+<li>解压源码，进入目录中执行<code>phpize</code>命令</li>
+<li>此时当前目录下会出现可执行文件configure，继续执行命令<code>./configure</code></li>
+<li>继续执行命令<code>make</code></li>
+<li>安装yaf <code>sudo make install</code></li>
+</ul>
+<blockquote>
+<p>下载的yaf版本注意要与PHP版本相匹配。比如yaf-3.x版本就需要PHP7+</p>
+</blockquote>
+<p>安装完毕后，就会在PHP的lib库文件夹中出现一个<code>yaf.so</code>文件，例如在我的MAC下就在以下路径中<code>/usr/lib/php/extensions/no-debug-non-zts-20121212/yaf.so</code></p>
+<p>安装后的帮助信息如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/sh /Users/baidu/yaf-2.3.5/yaf-2.3.5/libtool --mode=install cp ./yaf.la /Users/baidu/yaf-2.3.5/yaf-2.3.5/modules</span><br><span class="line">cp ./.libs/yaf.so /Users/baidu/yaf-2.3.5/yaf-2.3.5/modules/yaf.so</span><br><span class="line">cp ./.libs/yaf.lai /Users/baidu/yaf-2.3.5/yaf-2.3.5/modules/yaf.la</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Libraries have been installed <span class="keyword">in</span>:</span><br><span class="line">   /Users/baidu/yaf-2.3.5/yaf-2.3.5/modules</span><br><span class="line"></span><br><span class="line">If you ever happen to want to link against installed libraries</span><br><span class="line"><span class="keyword">in</span> a given directory, LIBDIR, you must either use libtool, and</span><br><span class="line">specify the full pathname of the library, or use the `-LLIBDIR<span class="string">'</span><br><span class="line">flag during linking and do at least one of the following:</span><br><span class="line">   - add LIBDIR to the `DYLD_LIBRARY_PATH'</span> environment variable during execution</span><br><span class="line"></span><br><span class="line">See any operating system documentation about shared libraries <span class="keyword">for</span> more information, such as the ld(1) and ld.so(8) manual pages.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">   Installing shared extensions:     /usr/lib/php/extensions/no-debug-non-zts-20121212/</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改PHP配置文件"><a href="#修改PHP配置文件" class="headerlink" title="修改PHP配置文件"></a>修改PHP配置文件</h3><p>查看PHP的配置文件信息：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php --ini</span><br><span class="line"><span class="comment">#Configuration File (php.ini) Path: /etc</span></span><br><span class="line"><span class="comment">#Loaded Configuration File:         (none)</span></span><br><span class="line"><span class="comment">#Scan for additional .ini files in: /Library/Server/Web/Config/php</span></span><br><span class="line"><span class="comment">#Additional .ini files parsed:      (none)</span></span><br></pre></td></tr></table></figure></p>
+<p>由于本机没有启用PHP配置文件，所以可以将/etc目录下的default模板文件，复制一份成php.ini<br>然后，编辑php.ini文件，在extension部分，添加<code>extension=yaf.so</code>文件加载yaf扩展，同时，在文件的最后添加yaf的配置<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">[yaf]</span><br><span class="line">yaf.environ = product</span><br><span class="line">yaf.library = NULL</span><br><span class="line">yaf.cache_config = 0</span><br><span class="line">yaf.name_suffix = 1</span><br><span class="line">yaf.name_separator = ""</span><br><span class="line">yaf.forward_limit = 5</span><br><span class="line">yaf.use_namespace = 0</span><br><span class="line">yaf.use_spl_autoload = 0</span><br></pre></td></tr></table></figure></p>
+<h3 id="检验扩展已加载"><a href="#检验扩展已加载" class="headerlink" title="检验扩展已加载"></a>检验扩展已加载</h3><p>运行命令<code>nginx -h</code>命令，可以查看到默认使用的配置文件是<code>/usr/local/etc/nginx/nginx.conf</code>，关键部分修改配置文件后如下：<br><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span>   /Users/baidu/Code/php;</span><br><span class="line">    <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">&#125;</span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ \.php$</span> &#123;</span><br><span class="line">    <span class="attribute">root</span>           /Users/baidu/Code/php;</span><br><span class="line">    <span class="attribute">fastcgi_pass</span>   <span class="number">127.0.0.1:9000</span>;</span><br><span class="line">    <span class="attribute">fastcgi_index</span>  index.php;</span><br><span class="line">    <span class="attribute">fastcgi_param</span>  SCRIPT_FILENAME  <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">    <span class="attribute">include</span>        fastcgi_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后执行<code>sudo nginx</code>来运行Nginx，若又来有修改配置文件，只需要执行<code>sudo nginx -s reload</code>即可</p>
+<p>将<code>/etc</code>目录下的<code>php-fpm.conf.default</code>拷贝一份在当前目录下，成<code>php-fpm.conf</code>，然后编辑该文件，修改关键两行数据如下：<br><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">pid</span>=/var/run/php-fpm.pid</span><br><span class="line"><span class="attr">error_log</span>=/var/log/php-fpm.log</span><br></pre></td></tr></table></figure></p>
+<p>然后执行命令<code>sudo php-fpm</code>来运行php-fpm</p>
+<p>随后在nginx配置文件中指定的root的目录下，创建一个index.php，<br><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后打开浏览器，访问<code>http://127.0.0.1:8080/index.php</code>，在页面中寻找到yaf的踪迹，即可表示加载成功！</p>
+
+                            </div>
+                            <div class="read-more-more clearfix">
+                                <div class="tag floatleft">
+                                    <span><i class="fa fa-tags"></i>Tags</span>
+                                    
+                                        
+                                            <a href="/tags/quickstart/">quickstart</a>
+                                        
+                                            <a href="/tags/yaf/">yaf</a>
+                                        
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="sidebar-widget">
+                    
+
+    
+        
+    
+        
+            
+            
+            
+        
+    
+
+    
+        
+    
+
+
+
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+
+    
+        
+        
+        
+        
+        
+        
+            
+        
+    
+        
+        
+        
+        
+            
+        
+        
+            
+        
+        
+    
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>相关文章</h4>
+                </div>
+
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/gitbook-quickstart/">gitbook快速入门</a></h4>
+                        <p>
+                            
+                            
+                            Modern book format and toolchain using Git and Markdown，这是gi
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <div class="sidebar-widget">
+                    <div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>最新文章</h4>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 22, 2016</span>
+                        <h4><a href="/2016/03/18/hello-world/">Hello World</a></h4>
+                        <p>
+                            
+                            
+                            # rewrite`s rules for wordpress pretty urlLoadModule rewrite
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/gitbook-quickstart/">gitbook快速入门</a></h4>
+                        <p>
+                            
+                            
+                            Modern book format and toolchain using Git and Markdown，这是gi
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/yaf-install/">Mac下yaf的安装</a></h4>
+                        <p>
+                            
+                            
+                            Yaf，全称 Yet Another Framework，是一个C语言编写的PHP框架，是一个以PHP扩展形式提供的PH
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-bottom-text text-center">
+                    <p>Blog Design 2016 &copy;All Rights reserved</p>
+                    <p>Designed by <span><a href="https://github.com/tkggcelt">tkggcelt</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/active.js"></script>
+<script>
+    $(window).load(function() {
+        $('#preloader').fadeOut('slow', function() {
+            $(this).remove();
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>gitbook快速入门 | 闲言逸语</title>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--========================== style css ==========================-->
+    <!--link rel="stylesheet" href="/css/main.css"-->
+    <link href="/css/style.css" rel="stylesheet">
+    <!--============================ fevicon ===============================-->
+    <link rel="shortcut icon" type="image/png" href="/img/fev-icon.ico">
+    <!--========================== responsive css ==========================-->
+    <link href="/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--========================== Main jQuery ==========================-->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!--========================== Bootstrap js ==========================-->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--========================== Custom js ==========================-->  
+    <script src="/js/jquery.sticky.js"></script>
+</head>
+<body class="index-one">
+    <!--========================== preloader ==========================-->
+<div id="preloader"></div>
+<!--========================== menu-area-start ==========================-->
+<section class="menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="menu-area-content clearfix">
+                <nav class="navbar" style="margin-bottom:0 !important;">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top:8px;margin-left:10px">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">闲言逸语</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                
+                                <li><a href="/">首页</a></li>
+                                
+                                <li><a href="/page/category.html">栏目</a></li>
+                                
+                                <li><a href="/page/tag.html">标签</a></li>
+                                
+                                <li><a href="/page/about.html">关于</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="categories-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="category-border-content">
+                    <div class="category-detail category">
+                        
+                            <div class="category-img">
+                                <img src="/postimg/default/default-15.jpg" class="set-random-image">
+                                <div class="category-overlay"></div>
+                            </div>
+                        
+
+                        <div class="category-text read-more clearfix">
+                            
+                            <h4 class="post-content-title"><a href="/2016/03/23/gitbook-quickstart/">gitbook快速入门</a></h4>
+                            <div class="clearfix post-content-info">
+                                <a href="#" class="art">
+                                    
+                                        <span class="label label-default">其他</span>
+                                    
+                                </a>
+                                <span class="art">
+                                    <span class="label label-default">3月 23, 2016</span>
+                                </span>
+                            </div>
+                            
+                            <div class="post-content" itemprop="articleBody">
+                                <p><code>Modern book format and toolchain using Git and Markdown</code>，这是<a href="https://github.com/GitbookIO/gitbook" target="_blank" rel="external">gitbook</a>项目主页上对 gitbook 的定义。gitbook 首先是一个软件，正如上面定义的那样，它使用 Git 和 Markdown 来编排书本，如果用户没有听过 Git 和 Markdown，那么 gitbook 可能不适合你！</p>
+<h1 id="安装gitbook"><a href="#安装gitbook" class="headerlink" title="安装gitbook"></a>安装gitbook</h1><p>gitbook的命令行客户端是基于nodejs写的，可以用npm安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install gitbook-cli -g</span><br></pre></td></tr></table></figure>
+<p>若未安装npm，请根据平台执行以下任意命令安装nodejs以及npm</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo brew install nodejs</span><br><span class="line">sudo apt-get install nodejs</span><br><span class="line">sodu yum install nodejs</span><br></pre></td></tr></table></figure>
+<h1 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h1><p>安装成功后，任选一个目录，用于存放book文件，然后执行以下命令<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gitbook init</span><br></pre></td></tr></table></figure></p>
+<p>此时，在当前目录下会自动生成两个文件：README.md、SUMMARY.md</p>
+<p>编辑README.md文件，写下本书的相关简介</p>
+<p>编辑SUMMARY.md文件，链接各零散的md文件，组合成一本book，按照以下格式来编辑：<br><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># Summary</span></span><br><span class="line"></span><br><span class="line">This is the summary of my book.</span><br><span class="line"></span><br><span class="line"><span class="bullet">* </span>[<span class="string">section 1</span>](<span class="link">section1/README.md</span>)</span><br><span class="line"><span class="code">    * [example 1](section1/example1.md)</span></span><br><span class="line"><span class="code">    * [example 2](section1/example2.md)</span></span><br><span class="line"><span class="bullet">* </span>[<span class="string">section 2</span>](<span class="link">section2/README.md</span>)</span><br><span class="line"><span class="code">    * [example 1](section2/example1.md)</span></span><br></pre></td></tr></table></figure></p>
+<p>请自行在当前目录下创建section1、section2文件夹，然后分别在两个文件夹中创建对应的md文件</p>
+<h1 id="编译书籍、并运行"><a href="#编译书籍、并运行" class="headerlink" title="编译书籍、并运行"></a>编译书籍、并运行</h1><p>若只单纯的生成HTML网页项目，则执行以下命令即可：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gitbook build</span><br></pre></td></tr></table></figure></p>
+<p>若在生成网页项目文件的同时，还想立即在浏览器中预览效果，请执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gitbook serve</span><br></pre></td></tr></table></figure></p>
+<h1 id="更多参考文档"><a href="#更多参考文档" class="headerlink" title="更多参考文档"></a>更多参考文档</h1><blockquote>
+<p>请参考<a href="http://www.chengweiyang.cn/gitbook/index.html" target="_blank" rel="external">文档</a></p>
+</blockquote>
+
+                            </div>
+                            <div class="read-more-more clearfix">
+                                <div class="tag floatleft">
+                                    <span><i class="fa fa-tags"></i>Tags</span>
+                                    
+                                        
+                                            <a href="/tags/gitbook/">gitbook</a>
+                                        
+                                            <a href="/tags/quickstart/">quickstart</a>
+                                        
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="sidebar-widget">
+                    
+
+    
+        
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+        
+        
+        
+        
+        
+        
+            
+        
+    
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>相关文章</h4>
+                </div>
+
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/yaf-install/">Mac下yaf的安装</a></h4>
+                        <p>
+                            
+                            
+                            Yaf，全称 Yet Another Framework，是一个C语言编写的PHP框架，是一个以PHP扩展形式提供的PH
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <div class="sidebar-widget">
+                    <div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>最新文章</h4>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 22, 2016</span>
+                        <h4><a href="/2016/03/18/hello-world/">Hello World</a></h4>
+                        <p>
+                            
+                            
+                            # rewrite`s rules for wordpress pretty urlLoadModule rewrite
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/gitbook-quickstart/">gitbook快速入门</a></h4>
+                        <p>
+                            
+                            
+                            Modern book format and toolchain using Git and Markdown，这是gi
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/yaf-install/">Mac下yaf的安装</a></h4>
+                        <p>
+                            
+                            
+                            Yaf，全称 Yet Another Framework，是一个C语言编写的PHP框架，是一个以PHP扩展形式提供的PH
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-bottom-text text-center">
+                    <p>Blog Design 2016 &copy;All Rights reserved</p>
+                    <p>Designed by <span><a href="https://github.com/tkggcelt">tkggcelt</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/active.js"></script>
+<script>
+    $(window).load(function() {
+        $('#preloader').fadeOut('slow', function() {
+            $(this).remove();
+        });
+    });
+</script>
+</body>
+</html>

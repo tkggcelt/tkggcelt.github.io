@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Shell命令学习之正则表达式 | 闲言逸语</title>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--========================== style css ==========================-->
+    <!--link rel="stylesheet" href="/css/main.css"-->
+    <link href="/css/style.css" rel="stylesheet">
+    <!--============================ fevicon ===============================-->
+    <link rel="shortcut icon" type="image/png" href="/img/fev-icon.ico">
+    <!--========================== responsive css ==========================-->
+    <link href="/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--========================== Main jQuery ==========================-->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!--========================== Bootstrap js ==========================-->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--========================== Custom js ==========================-->  
+    <script src="/js/jquery.sticky.js"></script>
+</head>
+<body class="index-one">
+    <!--========================== preloader ==========================-->
+<div id="preloader"></div>
+<!--========================== menu-area-start ==========================-->
+<section class="menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="menu-area-content clearfix">
+                <nav class="navbar" style="margin-bottom:0 !important;">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top:8px;margin-left:10px">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">闲言逸语</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                
+                                <li><a href="/">首页</a></li>
+                                
+                                <li><a href="/page/category.html">栏目</a></li>
+                                
+                                <li><a href="/page/tag.html">标签</a></li>
+                                
+                                <li><a href="/page/about.html">关于</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="categories-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="category-border-content">
+                    <div class="category-detail category">
+                        
+                            <div class="category-img">
+                                <img src="/postimg/default/default-15.jpg" class="set-random-image">
+                                <div class="category-overlay"></div>
+                            </div>
+                        
+
+                        <div class="category-text read-more clearfix">
+                            
+                            <h4 class="post-content-title"><a href="/2016/03/23/shell-regx/">Shell命令学习之正则表达式</a></h4>
+                            <div class="clearfix post-content-info">
+                                <a href="#" class="art">
+                                    
+                                        <span class="label label-default">shell</span>
+                                    
+                                </a>
+                                <span class="art">
+                                    <span class="label label-default">3月 23, 2016</span>
+                                </span>
+                            </div>
+                            
+                            <div class="post-content" itemprop="articleBody">
+                                <p>正则表达式在Shell的日常使用中具有举足轻重的地位，合理运用它，能极大提高工作效率，这里对正则表达式做一个简单易懂的介绍，便于自己查阅，也方便大家。</p>
+<h1 id="语系对正则表达式的影响"><a href="#语系对正则表达式的影响" class="headerlink" title="语系对正则表达式的影响"></a>语系对正则表达式的影响</h1><p>举例说明，在英文大小写的编码顺序中，zh_CN.big5和C这两种语系的输出结果分别如下：</p>
+<ul>
+<li>LANG=C时：0 1 2 3 … A B C D … Z a b c … z</li>
+<li>LANG=zh_CN时：0 1 2 3 … a A b B c C d D … z Z<br>所以，当在正则表达式中使用[A-Z]时，在LANG=C时就会仅选择大写字母，但在LANG=zh_CN.gb2312时，则会选择A b B c C … z Z这一堆字符。</li>
+</ul>
+<blockquote>
+<p>在使用正则表达式时，需要特别留意当时环境的语系为何，否则可能出现意料之外的结果</p>
+</blockquote>
+<h1 id="正则表达式忽略语系的写法"><a href="#正则表达式忽略语系的写法" class="headerlink" title="正则表达式忽略语系的写法"></a>正则表达式忽略语系的写法</h1><table>
+<thead>
+<tr>
+<th>特殊符号</th>
+<th>代表意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[:alnum:]</td>
+<td>代表英文大小写字符及数字，即0-9、a-z、A-Z</td>
+</tr>
+<tr>
+<td>[:alpha:]</td>
+<td>代表任何英文大小写字符，即A-Z、a-z</td>
+</tr>
+<tr>
+<td>[:blabk:]</td>
+<td>代表空格键与[Tab]键</td>
+</tr>
+<tr>
+<td>[:cntrl:]</td>
+<td>代表键盘上的控制键，即CR、LF、Tab、Del</td>
+</tr>
+<tr>
+<td>[:digit:]</td>
+<td>代表数字，即0-9</td>
+</tr>
+<tr>
+<td>[:graph:]</td>
+<td>除了空格符(空格键与Tab键)外所有其他按键</td>
+</tr>
+<tr>
+<td>[:lower:]</td>
+<td>代表小写字符，即a-z</td>
+</tr>
+<tr>
+<td>[:upper:]</td>
+<td>代表大写字符，即A-Z</td>
+</tr>
+<tr>
+<td>[:print:]</td>
+<td>代表任何可以被打印出来的字符</td>
+</tr>
+<tr>
+<td>[:punct:]</td>
+<td>代表标点符号，即” ‘ ? ! ; : # $</td>
+</tr>
+<tr>
+<td>[:space:]</td>
+<td>任何会产生空白的字符，即空格键、Tab、CR</td>
+</tr>
+<tr>
+<td>[:xdigit:]</td>
+<td>代表十六进制的数字类型，即0-9、A-F、a-f</td>
+</tr>
+</tbody>
+</table>
+<h1 id="正则表达式规则"><a href="#正则表达式规则" class="headerlink" title="正则表达式规则"></a>正则表达式规则</h1><h2 id="1-普通匹配"><a href="#1-普通匹配" class="headerlink" title="1.普通匹配"></a>1.普通匹配</h2><p>普通匹配即全量完全匹配<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -n <span class="string">'the'</span> file1</span><br><span class="line"><span class="comment"># 查找到完全包含`the`的行</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-中括号-匹配"><a href="#2-中括号-匹配" class="headerlink" title="2.中括号[]匹配"></a>2.中括号<code>[]</code>匹配</h2><ul>
+<li><p>中括号<code>[]</code>匹配中，无论中括号里写了多少个字符，它都<strong>只能代表一个字符</strong>，括号中的字符表示可选选项</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -n <span class="string">'t[ae]st'</span> file</span><br><span class="line"><span class="comment"># 可以匹配到：test、taste两个单词</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>中括号<strong>反向选择</strong>，只需用<strong><code>[^]</code></strong>来完成即可，代表的意思是不能出现中括号中给出的字符选项(注意<code>^</code>紧挨<code>[</code>左括号)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -n <span class="string">'[^g]oo'</span> file</span><br><span class="line"><span class="comment"># 不能匹配到google、可以匹配到tool、food</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>中括号中可以使用<code>-</code>连续字符，例如：0-9表示所有数字，a-z表示所有小写字符，A-Z表示所有大写字符</li>
+</ul>
+</blockquote>
+<h2 id="3-行首-与行尾-匹配"><a href="#3-行首-与行尾-匹配" class="headerlink" title="3.行首^与行尾$匹配"></a>3.行首<code>^</code>与行尾<code>$</code>匹配</h2><ul>
+<li>字符<code>^</code>在中括号中表示反向选择，在其他地方表示字符串的行首</li>
+<li>字符<code>$</code>则是代表字符串行尾<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -n <span class="string">"^$"</span> file</span><br><span class="line"><span class="comment">#这种用法可以找到文件中的空白行</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-任意一个字符-和重复字符"><a href="#4-任意一个字符-和重复字符" class="headerlink" title="4.任意一个字符.和重复字符*"></a>4.任意一个字符<code>.</code>和重复字符<code>*</code></h2><ul>
+<li><code>.</code>代表<strong>一定</strong>有一个任意字符</li>
+<li><code>*</code>代表<strong>重复前一个</strong>字符0到无穷次<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -n <span class="string">"g..d"</span> file</span><br><span class="line"><span class="comment"># 可以匹配到good、glad等，但不能匹配god</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="5-限定连续RE字符范围"><a href="#5-限定连续RE字符范围" class="headerlink" title="5.限定连续RE字符范围{}"></a>5.限定连续RE字符范围<code>{}</code></h2><p>在上面可知，我们可用<code>.</code>和<code>*</code>来设置0个到无穷个重复字符，那如果想要限制比如2~5个的范围，这个时候就可以用<code>{}</code>字符了<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -n <span class="string">'o\&#123;2\&#125;'</span> file</span><br><span class="line"><span class="comment">#可以匹配两个及以上的字母o，比如tool、good等</span></span><br><span class="line">grep -n <span class="string">'go\&#123;2,4\&#125;'</span> file</span><br><span class="line"><span class="comment">#可以匹配2~4个的字母o，比如google、goood、gooood等，但不能匹配god</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意，因为<code>{</code>和<code>}</code>符号在shell中是由特殊意义的，因此，在正则表达式中，需要用<code>\</code>符号来转义</p>
+</blockquote>
+
+                            </div>
+                            <div class="read-more-more clearfix">
+                                <div class="tag floatleft">
+                                    <span><i class="fa fa-tags"></i>Tags</span>
+                                    
+                                        
+                                            <a href="/tags/linux/">linux</a>
+                                        
+                                            <a href="/tags/shell/">shell</a>
+                                        
+                                            <a href="/tags/正则/">正则</a>
+                                        
+                                            <a href="/tags/regx/">regx</a>
+                                        
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="sidebar-widget">
+                    
+
+    
+        
+    
+        
+    
+        
+            
+            
+            
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+            
+            
+            
+        
+    
+
+    
+        
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+
+    
+        
+        
+        
+        
+        
+        
+            
+        
+    
+        
+        
+        
+        
+            
+        
+        
+        
+            
+        
+    
+        
+        
+        
+        
+            
+        
+            
+        
+        
+            
+        
+        
+    
+        
+        
+            
+        
+        
+            
+        
+        
+            
+
+    
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>相关文章</h4>
+                </div>
+
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <div class="sidebar-widget">
+                    <div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>最新文章</h4>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 22, 2016</span>
+                        <h4><a href="/2016/03/18/hello-world/">Hello World</a></h4>
+                        <p>
+                            
+                            
+                            # rewrite`s rules for wordpress pretty urlLoadModule rewrite
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/gitbook-quickstart/">gitbook快速入门</a></h4>
+                        <p>
+                            
+                            
+                            Modern book format and toolchain using Git and Markdown，这是gi
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/yaf-install/">Mac下yaf的安装</a></h4>
+                        <p>
+                            
+                            
+                            Yaf，全称 Yet Another Framework，是一个C语言编写的PHP框架，是一个以PHP扩展形式提供的PH
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-bottom-text text-center">
+                    <p>Blog Design 2016 &copy;All Rights reserved</p>
+                    <p>Designed by <span><a href="https://github.com/tkggcelt">tkggcelt</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/active.js"></script>
+<script>
+    $(window).load(function() {
+        $('#preloader').fadeOut('slow', function() {
+            $(this).remove();
+        });
+    });
+</script>
+</body>
+</html>

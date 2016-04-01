@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Shell命令学习之sort、wc、uniq | 闲言逸语</title>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--========================== style css ==========================-->
+    <!--link rel="stylesheet" href="/css/main.css"-->
+    <link href="/css/style.css" rel="stylesheet">
+    <!--============================ fevicon ===============================-->
+    <link rel="shortcut icon" type="image/png" href="/img/fev-icon.ico">
+    <!--========================== responsive css ==========================-->
+    <link href="/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--========================== Main jQuery ==========================-->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!--========================== Bootstrap js ==========================-->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--========================== Custom js ==========================-->  
+    <script src="/js/jquery.sticky.js"></script>
+</head>
+<body class="index-one">
+    <!--========================== preloader ==========================-->
+<div id="preloader"></div>
+<!--========================== menu-area-start ==========================-->
+<section class="menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="menu-area-content clearfix">
+                <nav class="navbar" style="margin-bottom:0 !important;">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top:8px;margin-left:10px">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">闲言逸语</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                
+                                <li><a href="/">首页</a></li>
+                                
+                                <li><a href="/page/category.html">栏目</a></li>
+                                
+                                <li><a href="/page/tag.html">标签</a></li>
+                                
+                                <li><a href="/page/about.html">关于</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="categories-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="category-border-content">
+                    <div class="category-detail category">
+                        
+                            <div class="category-img">
+                                <img src="/postimg/default/default-15.jpg" class="set-random-image">
+                                <div class="category-overlay"></div>
+                            </div>
+                        
+
+                        <div class="category-text read-more clearfix">
+                            
+                            <h4 class="post-content-title"><a href="/2016/03/23/shell-sort-wc-uniq/">Shell命令学习之sort、wc、uniq</a></h4>
+                            <div class="clearfix post-content-info">
+                                <a href="#" class="art">
+                                    
+                                        <span class="label label-default">shell</span>
+                                    
+                                </a>
+                                <span class="art">
+                                    <span class="label label-default">3月 23, 2016</span>
+                                </span>
+                            </div>
+                            
+                            <div class="post-content" itemprop="articleBody">
+                                <p>这篇文章开始介绍三个经常使用的用于排序、计算的命令。</p>
+<h1 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a>sort命令</h1><p>sort是很有趣的命令，它可以帮我们进行排序，并且可以依据不同的数据类型来排序。例如数字与文字的排序就不一样。<br>sort以行为单位。默认会以每一行从第一个字符开始做文字比较<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sort [-fbMnrtuk] [file or stdin]</span><br></pre></td></tr></table></figure></p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
+<li>-f：忽略大小写</li>
+<li>-b：忽略每一行最前面的空格符部分</li>
+<li>-M：以月份的名字来排序，例如JAN、DEC等</li>
+<li>-n：使用纯数字进行排序（默认是文字类型来排序）</li>
+<li>-r：反向排序</li>
+<li>-u：就是uniq，相同数据中，仅出现一行代表</li>
+<li>-t：分隔符，默认是用TAB键来分割；一般与-k连用</li>
+<li>-k：以哪个区间(field)来进行排序的意思</li>
+</ul>
+<h1 id="uniq命令"><a href="#uniq命令" class="headerlink" title="uniq命令"></a>uniq命令</h1><p>如果我们排序完成了，想要将重复的数据仅列出一行显示，可以使用uniq命令<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">uniq [-ic]</span><br></pre></td></tr></table></figure></p>
+<h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><ul>
+<li>-i：忽略大小写</li>
+<li>-c：进行计数，计算每一行相同字符出现多少次</li>
+</ul>
+<h1 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h1><p>如果需要计算文件里有多少字、多少行、多少字符的化，可以使用wc命令<br>wc命令默认输出三个数据，分别是行、字数、字符数<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wc [-lwm]</span><br></pre></td></tr></table></figure></p>
+<h2 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h2><ul>
+<li>-l：仅列出多少行</li>
+<li>-w：仅仅列出多少字（英文单字）</li>
+<li>-m：多少字符</li>
+</ul>
+
+                            </div>
+                            <div class="read-more-more clearfix">
+                                <div class="tag floatleft">
+                                    <span><i class="fa fa-tags"></i>Tags</span>
+                                    
+                                        
+                                            <a href="/tags/linux/">linux</a>
+                                        
+                                            <a href="/tags/shell/">shell</a>
+                                        
+                                            <a href="/tags/sort/">sort</a>
+                                        
+                                            <a href="/tags/wc/">wc</a>
+                                        
+                                            <a href="/tags/uniq/">uniq</a>
+                                        
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="sidebar-widget">
+                    
+
+    
+        
+    
+        
+    
+        
+            
+            
+            
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+            
+            
+            
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+            
+            
+            
+        
+    
+
+    
+        
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+
+    
+        
+        
+        
+        
+        
+            
+        
+        
+    
+
+    
+        
+        
+        
+        
+        
+        
+            
+        
+    
+        
+        
+        
+        
+            
+        
+        
+        
+            
+        
+    
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+
+    
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+        
+        
+            
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>相关文章</h4>
+                </div>
+
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <div class="sidebar-widget">
+                    <div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="popular-post-border-content">
+            <div class="popular-post-content">
+                <div class="popular-post-title">
+                    <h4>最新文章</h4>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/21/awk/">Shell命令学习之awk</a></h4>
+                        <p>
+                            
+                                <a href="/2016/03/21/awk/"><img src="/postimg/default/default-4.jpg" alt=""></a>
+                            
+                            
+                            awk是一个非常棒的数据处理工具，相比于sed常常作用于一整行的处理，awk则比较倾向于将一行分成数个『字段』来处理。因
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 22, 2016</span>
+                        <h4><a href="/2016/03/18/hello-world/">Hello World</a></h4>
+                        <p>
+                            
+                            
+                            # rewrite`s rules for wordpress pretty urlLoadModule rewrite
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/gitbook-quickstart/">gitbook快速入门</a></h4>
+                        <p>
+                            
+                            
+                            Modern book format and toolchain using Git and Markdown，这是gi
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/yaf-install/">Mac下yaf的安装</a></h4>
+                        <p>
+                            
+                            
+                            Yaf，全称 Yet Another Framework，是一个C语言编写的PHP框架，是一个以PHP扩展形式提供的PH
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                <div class="popular-post-single">
+                    <div class="popular-post-single-text">
+                        <span>3月 23, 2016</span>
+                        <h4><a href="/2016/03/23/shell-cut-grep/">shell-cut-grep</a></h4>
+                        <p>
+                            
+                            
+                            cut和grep都是以行为单位的的文本处理命令，放在一起讲解。
+cut命令cut以行为单位处理文本数据，将一段信息中的某
+                        </p>
+                    </div>
+                </div>
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-bottom-text text-center">
+                    <p>Blog Design 2016 &copy;All Rights reserved</p>
+                    <p>Designed by <span><a href="https://github.com/tkggcelt">tkggcelt</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/active.js"></script>
+<script>
+    $(window).load(function() {
+        $('#preloader').fadeOut('slow', function() {
+            $(this).remove();
+        });
+    });
+</script>
+</body>
+</html>
